@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Digital Clock</h2>
+        <div style="display: flex; justify-content: center;;">
+            <div class="clock">
+                <div>
+                    <p id="date"></p>
+                    <p id="clock"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var date = document.getElementById("date");
+        var clock = document.getElementById("clock");
+        function second() {
+            return d.getSeconds();
+        }
+        setInterval(function () {
+            const d = new Date();
+            var second = d.getSeconds().toString();
+            var hours = d.getHours().toString();
+            var minutes = d.getMinutes().toString();
+            if (second.length == 1) {
+                second = ("0" + d.getSeconds()).toString();
+            }
+            if (hours.length == 1) {
+                hours = ("0" + d.getHours()).toString();
+            }
+            if (minutes.length == 1) {
+                minutes = ("0" + d.getMinutes()).toString();
+            }
+            var C = hours + " : " + minutes + " : " + second;
+            clock.innerHTML = C;
+            var day = d.getDay();
+            if (day == 2) {
+                day = "TUES";
+            } else if (day == 1) {
+                day = "MON";
+            }
+            else if (day == 3) {
+                day = "WED";
+            }
+            else if (day = 4) {
+                day = "THURS";
+            }
+            else if (day == 5) {
+                day = "Fri;"
+            }
+            else if (day == 6) {
+                day = "SAT";
+            }
+            else {
+                day = "SUN";
+            }
+            day =  day.toLowerCase();
+            day = day.replace(day[0],day[0].toUpperCase())
+            var mounths = [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            ];
+            var getIndexMounth = d.getMonth();
+            var mounth = mounths[getIndexMounth].slice(0,3);
+            var dates = d.getDate().toString();
+            if(dates.length==0){
+                dates = ("0" + d.getDate()).toString
+            }
+            var year = d.getFullYear()
+            var Fulldate = day + ", " + mounth + " "  + dates + " " + year;
+            date.innerHTML = Fulldate;
+        }, 1000);
+
+    </script>
+</body>
+
+</html>
